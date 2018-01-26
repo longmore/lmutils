@@ -1,0 +1,24 @@
+{
+  "name": "lmutils",
+  "version": "1.0.0",
+  "description": "前端常用工具库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "utils",
+    "tool",
+    "lmutils"
+  ],
+  "author": "longmore",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "chalk": "^2.3.0",
+    "ora": "^1.3.0",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.10.0"
+  }
+}
