@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JS拖拽</title>
+    <style>
+        *{padding: 0; margin: 0; }
+        .box{width: 100px;height: 100px;background: blue;position: absolute; }
+    </style>
+    <script>
+        var isDown = false;
+        var ObjLeft, ObjTop, posX, posY, obj,offsetX,offsetY;
+        window.onload = function() {
+            obj = document.getElementById('box');
+            obj.onmousedown = down;
+            document.onmousemove = move;
+            document.onmouseup = up;
+        }
+
+        function down(event) {
+            obj.style.cursor = "move";
+            isDown = true;
+            ObjLeft = obj.offsetLeft;
+            ObjTop = obj.offsetTop;
+            posX = parseInt(mousePosition(event).x);
+            posY = parseInt(mousePosition(event).y);
+            offsetX=posX-ObjLeft;
+            offsetY=posY-ObjTop;
+        }
+
+        function move(event) {
+            if (isDown == true) {
+                var x=mousePosition(event).x-offsetX
+                var y=mousePosition(event).y-offsetY
+                var w = document.documentElement.clientWidth - obj.offsetWidth;
+                var h = document.documentElement.clientHeight - obj.offsetHeight;
+                console.log(x + ',' + y);
+                x=Math.min(w,Math.max(0,x));
+                y=Math.min(h,Math.max(0,y));
+                obj.style.left = x + 'px';
+                obj.style.top = y + 'px';
+            }
+        }
+
+        function up() {
+            isDown = false;
+        }
+
+        function mousePosition(evt) {
+            var xPos, yPos;
+            evt = evt || window.event;
+            if (evt.pageX) {
+                xPos = evt.pageX;
+                yPos = evt.pageY;
+            } else {
+                xPos = evt.clientX + document.body.scrollLeft - document.body.clientLeft;
+                yPos = evt.clientY + document.body.scrollTop - document.body.clientTop;
+            }
+            return {
+                x: xPos,
+                y: yPos
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box" class="box"></div>
+</body>
+</html>

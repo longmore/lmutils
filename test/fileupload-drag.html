@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/1.11.0-beta3/jquery.min.js"></script>
+    <style>
+        .img-box {
+            height: 200px;
+            width: 400px;
+            margin: 100px auto;
+            border-radius: 5px;
+            border: 1px dashed #aaa;
+            display: flex;
+            align-items: center;
+            vertical-align: middle;
+            justify-content:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="img-box">
+        drop your image here
+    </div>
+    <script>
+        let box = document.querySelector('.img-box');
+        box.addEventListener('dragover', e => {
+            e.preventDefault();
+        })
+        box.addEventListener('drop', event => {
+            event.preventDefault();
+            let file = event.dataTransfer.files[0];
+            let fileReader = new FileReader();
+            fileReader.onload = function () {
+                $(`<img src="${this.result}">`).appendTo("body");
+            }
+            fileReader.readAsDataURL(file);
+        })
+    </script>
+</body>
+</html>

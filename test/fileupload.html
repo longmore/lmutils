@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/1.11.0-beta3/jquery.min.js"></script>
+</head>
+<body>
+    <input type="file" id="file-input" name="fileContent">
+    <script>
+        $('#file-input').on('change', function () {
+            let fileReader = new FileReader()
+            fileReader.onload = function () {
+                $(`<img src="${this.result}">`).appendTo("body");
+            }
+            fileReader.readAsDataURL(this.files[0]);
+        });
+    </script>
+</body>
+</html>

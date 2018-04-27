@@ -1,6 +1,6 @@
 {
-  "name": "lmutils",
-  "version": "1.0.0",
+  "name": "rom-tools",
+  "version": "1.0.1",
   "description": "前端常用工具库",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "keywords": [
     "utils",
     "tool",
-    "lmutils"
+    "rom-tools"
   ],
   "author": "longmore",
   "license": "MIT",
